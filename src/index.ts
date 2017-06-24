@@ -12,18 +12,11 @@ PIXI.loader
       resources: PIXI.loaders.ResourceDictionary
     ) => {
       const rocket = new PIXI.Sprite(resources.rocket.texture);
-      rocket.setTransform(
-        app.view.width / 2 - rocket.width / 2,
-        app.view.height - rocket.height / 2,
-        0.5,
-        0.5
-      );
+      const rocketScale = 0.125;
+      rocket.anchor.x = 0.5;
+      rocket.anchor.y = 0.5;
+      rocket.scale.set(rocketScale);
+      rocket.position.set(app.view.width / 2, app.view.height - rocket.height);
       app.stage.addChild(rocket);
-
-      console.log(rocket.height);
-
-      // app.ticker.add(() => {
-      // rocket.rotation += 0.01;
-      // });
     }
   );
